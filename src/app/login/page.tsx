@@ -23,7 +23,7 @@ const page = () => {
             placeholder="Enter your password..."
             className="border border-solid border-gray-300 rounded p-2 w-64"
           />
-          <button className="bg-gray-300 text-white p-2 rounded w-64">
+          <button className="bg-gray-400 text-white p-2 rounded w-64">
             Continue with Email
           </button>
         </form>
