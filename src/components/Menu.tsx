@@ -1,9 +1,9 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 const Menu = () => {
   return (
     <nav className="bg-gray-400 p-5 pt-6">
-      <ul className="flex flex-col gap-4 font-black items-center">
+      <ul className="flex flex-col items-center gap-4 font-black">
         <Link href="/">
           <li>HOME</li>
         </Link>
