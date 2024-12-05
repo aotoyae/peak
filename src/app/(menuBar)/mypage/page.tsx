@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Profile from '../../assets/profile.png';
+import Profile from '../../../assets/profile.png';
 
 const page = () => {
   return (
