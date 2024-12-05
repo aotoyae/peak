@@ -1,8 +1,12 @@
+import Link from 'next/link';
+
 const page = () => {
   return (
     <main className="grid grid-cols-2 h-screen">
       <section className="bg-black text-white flex flex-col justify-between p-6">
-        <h1 className="font-bold text-4xl">peak</h1>
+        <Link href="/">
+          <h1 className="font-bold text-4xl">peak</h1>
+        </Link>
         <div className="flex flex-col gap-3">
           <p>"이곳에서 세상의 의미 있는 세일즈가 이루어지길."</p>
           <p>Meet for Deal</p>

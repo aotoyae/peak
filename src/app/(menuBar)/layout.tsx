@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import Menu from '@/components/Menu';
 
 export default function MenuLayout({
   children,
@@ -8,7 +9,10 @@ export default function MenuLayout({
   return (
     <>
       <Header />
-      {children}
+      <main className="flex justify-between">
+        <Menu />
+        {children}
+      </main>
     </>
   );
 }

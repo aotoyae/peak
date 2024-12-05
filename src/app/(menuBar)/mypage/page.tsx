@@ -3,7 +3,7 @@ import Profile from '../../../assets/profile.png';
 
 const page = () => {
   return (
-    <main className="m-4">
+    <main className="m-4 w-full">
       <h1 className="font-black text-2xl border-solid border-b-2 border-black">
         MY PAGE
       </h1>
