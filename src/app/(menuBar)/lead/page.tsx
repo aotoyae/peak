@@ -1,3 +1,5 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 const page = () => {
   return (
     <main className="w-full">
@@ -22,6 +24,21 @@ const page = () => {
           <li className="flex items-center justify-center">2024-10-10</li>
         </ul>
       </section>
+      <Tabs defaultValue="prompt" className="w-full">
+        <TabsList className="grid w-full grid-cols-4">
+          <TabsTrigger value="prompt">프롬프트</TabsTrigger>
+          {/* 회사 소개서에 따른 AI/HI 분석 */}
+          <TabsTrigger value="summary">전</TabsTrigger>
+          {/* 자세한 거래 정보 및 메모 */}
+          <TabsTrigger value="details">중</TabsTrigger>
+          {/* 거래 성사 정보 및 리마인드 */}
+          <TabsTrigger value="follow-up">후</TabsTrigger>
+        </TabsList>
+        <TabsContent value="prompt">프롬프트 content</TabsContent>
+        <TabsContent value="summary">전 content</TabsContent>
+        <TabsContent value="details">중 content</TabsContent>
+        <TabsContent value="follow-up">후 content</TabsContent>
+      </Tabs>
     </main>
   );
 };
