@@ -1,3 +1,7 @@
+import Details from "@/components/domain/lead/Details";
+import FollowUp from "@/components/domain/lead/FollowUp";
+import Prompt from "@/components/domain/lead/Prompt";
+import Summary from "@/components/domain/lead/Summary";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const page = () => {
@@ -26,6 +30,7 @@ const page = () => {
       </section>
       <Tabs defaultValue="prompt" className="w-full">
         <TabsList className="grid w-full grid-cols-4">
+          {/* 리드 아이템 목록 */}
           <TabsTrigger value="prompt">프롬프트</TabsTrigger>
           {/* 회사 소개서에 따른 AI/HI 분석 */}
           <TabsTrigger value="summary">전</TabsTrigger>
@@ -34,10 +39,18 @@ const page = () => {
           {/* 거래 성사 정보 및 리마인드 */}
           <TabsTrigger value="follow-up">후</TabsTrigger>
         </TabsList>
-        <TabsContent value="prompt">프롬프트 content</TabsContent>
-        <TabsContent value="summary">전 content</TabsContent>
-        <TabsContent value="details">중 content</TabsContent>
-        <TabsContent value="follow-up">후 content</TabsContent>
+        <TabsContent value="prompt">
+          <Prompt />
+        </TabsContent>
+        <TabsContent value="summary">
+          <Summary />
+        </TabsContent>
+        <TabsContent value="details">
+          <Details />
+        </TabsContent>
+        <TabsContent value="follow-up">
+          <FollowUp />
+        </TabsContent>
       </Tabs>
     </main>
   );
