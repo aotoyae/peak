@@ -19,19 +19,19 @@ const page = () => {
           <input
             type="text"
             placeholder="Enter your email..."
-            className="w-64 rounded border border-solid border-gray-300 p-2"
+            className="w-64 rounded border border-solid border-neutral-300 p-2"
           />
           <label className="block w-64 text-left">Password</label>
           <input
             type="password"
             placeholder="Enter your password..."
-            className="w-64 rounded border border-solid border-gray-300 p-2"
+            className="w-64 rounded border border-solid border-neutral-300 p-2"
           />
-          <button className="w-64 rounded bg-gray-400 p-2 text-white">
+          <button className="w-64 rounded bg-neutral-400 p-2 text-white">
             Continue with Email
           </button>
         </form>
-        <p className="absolute bottom-6 right-6 text-sm text-gray-400">
+        <p className="absolute bottom-6 right-6 text-sm text-neutral-400">
           문의 안내 edu@goodai.kr
         </p>
       </section>

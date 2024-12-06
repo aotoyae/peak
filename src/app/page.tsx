@@ -11,7 +11,7 @@ export default function Home() {
         <section>
           <h1>peak</h1>
           <Link href="/lead">
-            <button className="rounded border border-solid bg-gray-300 p-3">
+            <button className="rounded border border-solid bg-neutral-300 p-3">
               리드 아이템 페이지로
             </button>
           </Link>
