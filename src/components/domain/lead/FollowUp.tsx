@@ -81,7 +81,7 @@ const FollowUp = () => {
         <div>
           <h4 className="m-2 text-lg font-bold">거래성사 가능성</h4>
           <Table>
-            <TableHeader>
+            <TableHeader className="bg-neutral-100">
               <TableRow>
                 <TableHead>가능성</TableHead>
                 <TableHead>설명</TableHead>
