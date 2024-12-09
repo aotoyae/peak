@@ -6,7 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const page = () => {
   return (
-    <main className="w-full">
+    <main className="w-full bg-white">
       <section className="flex w-full flex-col items-center justify-center">
         <h2 className="py-4 font-bold">그린몰치과 인공지능 아바타 판매</h2>
         <ul className="grid h-10 w-full grid-cols-8 border-y border-solid border-neutral-400">
