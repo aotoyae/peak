@@ -8,10 +8,12 @@ export default function Home() {
       <Header />
       <main className="flex">
         <Menu />
-        <section>
-          <h1>peak</h1>
+        <section className="w-full bg-white p-4">
+          <h1 className="border-b-2 border-solid border-black text-2xl font-black">
+            HOME
+          </h1>
           <Link href="/lead">
-            <button className="rounded border border-solid bg-neutral-300 p-3">
+            <button className="mt-4 rounded border border-solid bg-neutral-300 p-3">
               리드 아이템 페이지로
             </button>
           </Link>
