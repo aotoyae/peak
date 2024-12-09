@@ -70,7 +70,9 @@ const FollowUp = () => {
                 <TableRow key={category.name}>
                   <TableCell>{category.name}</TableCell>
                   <TableCell>{category.info}</TableCell>
-                  <TableCell>{category.score}</TableCell>
+                  <TableCell className="text-center">
+                    {category.score}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -95,7 +97,7 @@ const FollowUp = () => {
                   딜 성사 가능성이 낮습니다. 우리 회사와 맞지 않을 가능성이
                   높습니다.
                 </TableCell>
-                <TableCell>22</TableCell>
+                <TableCell className="text-center">22</TableCell>
               </TableRow>
             </TableBody>
           </Table>
