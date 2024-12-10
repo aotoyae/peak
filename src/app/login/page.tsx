@@ -8,7 +8,7 @@ const page = () => {
           <h1 className="text-4xl font-bold">peak</h1>
         </Link>
         <div className="flex flex-col gap-3">
-          <p>"이곳에서 세상의 의미 있는 세일즈가 이루어지길."</p>
+          <p>&ldquo;이곳에서 세상의 의미 있는 세일즈가 이루어지길.&rdquo;</p>
           <p>Meet for Deal</p>
         </div>
       </section>
