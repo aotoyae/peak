@@ -107,11 +107,11 @@ export default function Home() {
               ))}
             </DragDropContext>
           </div>
-          {/* <Link href="/lead">
+          <Link href="/lead">
             <button className="p-3 mt-4 border border-solid rounded bg-neutral-300">
               리드 아이템 페이지로
             </button>
-          </Link> */}
+          </Link>
         </section>
       </main>
     </div>
