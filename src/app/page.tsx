@@ -2,6 +2,7 @@
 
 import Header from "@/components/Header";
 import Menu from "@/components/Menu";
+import { LEAD_ITEM_STATUS } from "@/types/lead";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
@@ -10,23 +11,6 @@ import {
   Draggable,
   DropResult,
 } from "react-beautiful-dnd";
-
-export type LEAD_ITEM_STATUS =
-  | "leadGen"
-  | "proposal"
-  | "negotiation"
-  | "closed"
-  | "lost";
-
-export type LEAD_ITEM = {
-  id: string;
-  status: LEAD_ITEM_STATUS;
-  title: string;
-};
-
-export type LEAD_ITEMS = {
-  [key in LEAD_ITEM_STATUS]: LEAD_ITEM[];
-};
 
 const LEAD_ITEMS = {
   leadGen: [
