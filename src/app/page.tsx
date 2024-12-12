@@ -11,42 +11,96 @@ import {
   DropResult,
 } from "react-beautiful-dnd";
 
-type Item = {
+// const LEAD_STATES = [
+//   {
+//     id: "leadGen",
+//     name: "Lead Gen",
+//     info: "제안 전",
+//     items: [
+//       { id: "1", content: "치과" },
+//       { id: "2", content: "정형외과" },
+//       { id: "3", content: "내과" },
+//       { id: "4", content: "한의원" },
+//     ],
+//   },
+//   {
+//     id: "proposal",
+//     name: "Proposal",
+//     info: "제안 중",
+//     items: [{ id: "4", content: "한의원" }],
+//   },
+//   { id: "negotiation", name: "Negotiation", info: "협상 중" },
+//   { id: "closed", name: "Closed", info: "계약 완료" },
+//   { id: "lost", name: "Lost", info: "계약 취소" },
+// ];
+
+export type LEAD_ITEM_STATUS =
+  | "leadGen"
+  | "proposal"
+  | "negotiation"
+  | "closed"
+  | "lost";
+
+export type LEAD_ITEM = {
   id: string;
-  content: string;
-  stateId: string;
+  status: LEAD_ITEM_STATUS;
+  title: string;
 };
 
-const LEAD_ITEMS: Item[] = [
-  { id: "1", content: "First task", stateId: "leadGen" },
-  { id: "2", content: "Second task", stateId: "leadGen" },
-  { id: "3", content: "Third task", stateId: "leadGen" },
-];
+export type LEAD_ITEMS = {
+  [key in LEAD_ITEM_STATUS]: LEAD_ITEM[];
+};
 
-const LEAD_STATES = [
-  {
-    id: "leadGen",
+const LEAD_ITEMS = {
+  leadGen: [
+    { id: "1", title: "치과", status: "leadGen" },
+    { id: "2", title: "정형외과", status: "leadGen" },
+    { id: "3", title: "내과", status: "leadGen" },
+    { id: "4", title: "한의원", status: "leadGen" },
+  ],
+  proposal: [{ id: "5", title: "산부인과", status: "proposal" }],
+  negotiation: [],
+  closed: [],
+  lost: [],
+};
+
+const COLUMN_TITLES = {
+  leadGen: {
     name: "Lead Gen",
     info: "제안 전",
   },
-  { id: "proposal", name: "Proposal", info: "제안 중" },
-  { id: "negotiation", name: "Negotiation", info: "협상 중" },
-  { id: "closed", name: "Closed", info: "제안 완료" },
-  { id: "lost", name: "Lost", info: "제안 취소" },
-];
+  proposal: {
+    name: "Proposal",
+    info: "제안 중",
+  },
+  negotiation: {
+    name: "Negotiation",
+    info: "협상 중",
+  },
+  closed: {
+    name: "Closed",
+    info: "제안 전",
+  },
+  lost: {
+    name: "Lead Gen",
+    info: "계약 완료",
+  },
+};
 
 export default function Home() {
   const [enabled, setEnabled] = useState(false);
-  const [leadItems, setItems] = useState(LEAD_ITEMS);
+  const [leadItems, setLeadItems] = useState(LEAD_ITEMS);
 
-  const onDragEnd = (result: DropResult) => {
-    if (!result.destination) return;
+  const onDragEnd = ({ source, destination }: DropResult) => {
+    if (!destination) return;
 
-    const reorderedItems = Array.from(leadItems);
-    const [removed] = reorderedItems.splice(result.source.index, 1);
-    reorderedItems.splice(result.destination.index, 0, removed);
+    const scourceKey = source.droppableId as LEAD_ITEM_STATUS;
+    const destinationKey = destination.droppableId as LEAD_ITEM_STATUS;
 
-    setItems(reorderedItems);
+    const _items = JSON.parse(JSON.stringify(leadItems)) as typeof leadItems;
+    const [targetItem] = _items[scourceKey].splice(source.index, 1);
+    _items[destinationKey].splice(destination.index, 0, targetItem);
+    setLeadItems(_items);
   };
 
   useEffect(() => {
@@ -71,27 +125,27 @@ export default function Home() {
           <h1 className="border-b-2 border-solid border-black text-2xl font-black">
             HOME
           </h1>
-          <div className="flex justify-between bg-neutral-100 p-4">
+          <div className="flex justify-between gap-4 p-4">
             <DragDropContext onDragEnd={onDragEnd}>
-              {LEAD_STATES.map((state) => (
-                <div
-                  key={state.id}
-                  className="rounded border border-solid border-neutral-300 bg-white"
-                >
-                  <div className="p-4">
-                    <h2 className="text-lg font-bold">{state.name}</h2>
-                    <p className="text-sm text-neutral-500">{state.info}</p>
-                  </div>
-                  <Droppable droppableId={state.id}>
-                    {(provided) => (
+              {Object.keys(leadItems).map((key) => (
+                <div key={key} className="w-1/5">
+                  <Droppable droppableId={key}>
+                    {(provided, snapshot) => (
                       <div
                         {...provided.droppableProps}
                         ref={provided.innerRef}
-                        className="rounded border border-solid border-red-500"
+                        className={`h-full rounded-lg border border-solid border-neutral-300 p-2 ${snapshot.isDraggingOver && "shadow-lg"}`}
                       >
-                        {leadItems
-                          .filter((item) => item.stateId === state.id)
-                          .map((item, index) => (
+                        <div className="p-4">
+                          <h2 className="text-lg font-bold">
+                            {COLUMN_TITLES[key].name}
+                          </h2>
+                          <p className="text-sm text-neutral-500">
+                            {COLUMN_TITLES[key].info}
+                          </p>
+                        </div>
+                        {leadItems[key as LEAD_ITEM_STATUS].map(
+                          (item, index) => (
                             <Draggable
                               key={item.id}
                               draggableId={item.id}
@@ -102,17 +156,16 @@ export default function Home() {
                                   ref={provided.innerRef}
                                   {...provided.draggableProps}
                                   {...provided.dragHandleProps}
-                                  className={`m-2 rounded border bg-white p-4 ${
-                                    snapshot.isDragging
-                                      ? "border-blue-500 bg-blue-100"
-                                      : ""
+                                  className={`mx-2 my-4 rounded border border-solid border-neutral-100 p-4 shadow-md ${
+                                    snapshot.isDragging && "bg-neutral-300"
                                   }`}
                                 >
-                                  {item.content}
+                                  {item.title}
                                 </div>
                               )}
                             </Draggable>
-                          ))}
+                          ),
+                        )}
                         {provided.placeholder}
                       </div>
                     )}
