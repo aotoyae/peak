@@ -2,7 +2,7 @@
 
 import Header from "@/components/Header";
 import Menu from "@/components/Menu";
-import { LEAD_ITEM_STATUS } from "@/types/lead";
+import { LEAD_ITEM_STATUS, LeadKey, LeadTitle } from "@/types/lead";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
@@ -25,7 +25,7 @@ const LEAD_ITEMS = {
   lost: [],
 };
 
-const COLUMN_TITLES = {
+const COLUMN_TITLES: Record<LeadKey, LeadTitle> = {
   leadGen: {
     name: "Lead Gen",
     info: "제안 전",
@@ -99,10 +99,10 @@ export default function Home() {
                       >
                         <div className="p-4">
                           <h2 className="text-lg font-bold">
-                            {COLUMN_TITLES[key].name}
+                            {COLUMN_TITLES[key as LeadKey].name}
                           </h2>
                           <p className="text-sm text-neutral-500">
-                            {COLUMN_TITLES[key].info}
+                            {COLUMN_TITLES[key as LeadKey].info}
                           </p>
                         </div>
                         {leadItems[key as LEAD_ITEM_STATUS].map(

@@ -14,3 +14,15 @@ export type LEAD_ITEM = {
 export type LEAD_ITEMS = {
   [key in LEAD_ITEM_STATUS]: LEAD_ITEM[];
 };
+
+export type LeadKey =
+  | "leadGen"
+  | "proposal"
+  | "negotiation"
+  | "closed"
+  | "lost";
+
+export interface LeadTitle {
+  name: string;
+  info: string;
+}
