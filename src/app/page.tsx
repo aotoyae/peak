@@ -2,8 +2,9 @@
 
 import Header from "@/components/Header";
 import Menu from "@/components/Menu";
+import { LEAD_ITEM_STATUS, LeadKey, LeadTitle } from "@/types/lead";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   DragDropContext,
   Droppable,
@@ -11,73 +12,101 @@ import {
   DropResult,
 } from "react-beautiful-dnd";
 
-type Item = {
-  id: string;
-  content: string;
-  stateId: string;
+const LEAD_ITEMS = {
+  leadGen: [
+    { id: "1", title: "치과", status: "leadGen" },
+    { id: "2", title: "정형외과", status: "leadGen" },
+    { id: "3", title: "내과", status: "leadGen" },
+    { id: "4", title: "한의원", status: "leadGen" },
+  ],
+  proposal: [{ id: "5", title: "산부인과", status: "proposal" }],
+  negotiation: [],
+  closed: [],
+  lost: [],
 };
 
-const LEAD_ITEMS: Item[] = [
-  { id: "1", content: "First task", stateId: "leadGen" },
-  { id: "2", content: "Second task", stateId: "leadGen" },
-  { id: "3", content: "Third task", stateId: "leadGen" },
-];
-
-const LEAD_STATES = [
-  {
-    id: "leadGen",
+const COLUMN_TITLES: Record<LeadKey, LeadTitle> = {
+  leadGen: {
     name: "Lead Gen",
     info: "제안 전",
   },
-  { id: "proposal", name: "Proposal", info: "제안 중" },
-  { id: "negotiation", name: "Negotiation", info: "협상 중" },
-  { id: "closed", name: "Closed", info: "제안 완료" },
-  { id: "lost", name: "Lost", info: "제안 취소" },
-];
+  proposal: {
+    name: "Proposal",
+    info: "제안 중",
+  },
+  negotiation: {
+    name: "Negotiation",
+    info: "협상 중",
+  },
+  closed: {
+    name: "Closed",
+    info: "제안 전",
+  },
+  lost: {
+    name: "Lead Gen",
+    info: "계약 완료",
+  },
+};
 
 export default function Home() {
-  const [leadItems, setItems] = useState(LEAD_ITEMS);
+  const [enabled, setEnabled] = useState(false);
+  const [leadItems, setLeadItems] = useState(LEAD_ITEMS);
 
-  const onDragEnd = (result: DropResult) => {
-    if (!result.destination) return;
+  const onDragEnd = ({ source, destination }: DropResult) => {
+    if (!destination) return;
 
-    const reorderedItems = Array.from(leadItems);
-    const [removed] = reorderedItems.splice(result.source.index, 1);
-    reorderedItems.splice(result.destination.index, 0, removed);
+    const scourceKey = source.droppableId as LEAD_ITEM_STATUS;
+    const destinationKey = destination.droppableId as LEAD_ITEM_STATUS;
 
-    setItems(reorderedItems);
+    const _items = JSON.parse(JSON.stringify(leadItems)) as typeof leadItems;
+    const [targetItem] = _items[scourceKey].splice(source.index, 1);
+    _items[destinationKey].splice(destination.index, 0, targetItem);
+    setLeadItems(_items);
   };
+
+  useEffect(() => {
+    const animation = requestAnimationFrame(() => setEnabled(true));
+
+    return () => {
+      cancelAnimationFrame(animation);
+      setEnabled(false);
+    };
+  }, []);
+
+  if (!enabled) {
+    return null;
+  }
 
   return (
     <div>
       <Header />
       <main className="flex">
         <Menu />
-        <section className="w-full p-4 bg-white">
-          <h1 className="text-2xl font-black border-b-2 border-black border-solid">
+        <section className="w-full bg-white p-4">
+          <h1 className="border-b-2 border-solid border-black text-2xl font-black">
             HOME
           </h1>
-          <div className="flex justify-between p-4 bg-neutral-100">
+          <div className="flex justify-between gap-4 p-4">
             <DragDropContext onDragEnd={onDragEnd}>
-              {LEAD_STATES.map((state) => (
-                <div
-                  key={state.id}
-                  className="bg-white border border-solid rounded border-neutral-300"
-                >
-                  <div className="p-4">
-                    <h2 className="text-lg font-bold">{state.name}</h2>
-                    <p className="text-sm text-neutral-500">{state.info}</p>
-                  </div>
-                  <Droppable droppableId={state.id}>
-                    {(provided) => (
+              {Object.keys(leadItems).map((key) => (
+                <div key={key} className="w-1/5">
+                  <Droppable droppableId={key}>
+                    {(provided, snapshot) => (
                       <div
                         {...provided.droppableProps}
                         ref={provided.innerRef}
-                        className="border border-red-500 border-solid rounded"
+                        className={`h-full rounded-lg border border-solid border-neutral-300 p-2 ${snapshot.isDraggingOver && "shadow-lg"}`}
                       >
-                        {leadItems
-                          .filter((item) => item.stateId === state.id)
-                          .map((item, index) => (
+                        <div className="p-4">
+                          <h2 className="text-lg font-bold">
+                            {COLUMN_TITLES[key as LeadKey].name}
+                          </h2>
+                          <p className="text-sm text-neutral-500">
+                            {COLUMN_TITLES[key as LeadKey].info}
+                          </p>
+                        </div>
+                        {leadItems[key as LEAD_ITEM_STATUS].map(
+                          (item, index) => (
                             <Draggable
                               key={item.id}
                               draggableId={item.id}
@@ -88,17 +117,16 @@ export default function Home() {
                                   ref={provided.innerRef}
                                   {...provided.draggableProps}
                                   {...provided.dragHandleProps}
-                                  className={`m-2 rounded border bg-white p-4 ${
-                                    snapshot.isDragging
-                                      ? "border-blue-500 bg-blue-100"
-                                      : ""
+                                  className={`mx-2 my-4 rounded border border-solid border-neutral-100 p-4 shadow-md ${
+                                    snapshot.isDragging && "bg-neutral-300"
                                   }`}
                                 >
-                                  {item.content}
+                                  {item.title}
                                 </div>
                               )}
                             </Draggable>
-                          ))}
+                          ),
+                        )}
                         {provided.placeholder}
                       </div>
                     )}
@@ -108,7 +136,7 @@ export default function Home() {
             </DragDropContext>
           </div>
           <Link href="/lead">
-            <button className="p-3 mt-4 border border-solid rounded bg-neutral-300">
+            <button className="mt-4 rounded border border-solid bg-neutral-300 p-3">
               리드 아이템 페이지로
             </button>
           </Link>
