@@ -11,29 +11,6 @@ import {
   DropResult,
 } from "react-beautiful-dnd";
 
-// const LEAD_STATES = [
-//   {
-//     id: "leadGen",
-//     name: "Lead Gen",
-//     info: "제안 전",
-//     items: [
-//       { id: "1", content: "치과" },
-//       { id: "2", content: "정형외과" },
-//       { id: "3", content: "내과" },
-//       { id: "4", content: "한의원" },
-//     ],
-//   },
-//   {
-//     id: "proposal",
-//     name: "Proposal",
-//     info: "제안 중",
-//     items: [{ id: "4", content: "한의원" }],
-//   },
-//   { id: "negotiation", name: "Negotiation", info: "협상 중" },
-//   { id: "closed", name: "Closed", info: "계약 완료" },
-//   { id: "lost", name: "Lost", info: "계약 취소" },
-// ];
-
 export type LEAD_ITEM_STATUS =
   | "leadGen"
   | "proposal"
