@@ -3,7 +3,7 @@
 import Header from "@/components/Header";
 import Menu from "@/components/Menu";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   DragDropContext,
   Droppable,
@@ -36,6 +36,7 @@ const LEAD_STATES = [
 ];
 
 export default function Home() {
+  const [enabled, setEnabled] = useState(false);
   const [leadItems, setItems] = useState(LEAD_ITEMS);
 
   const onDragEnd = (result: DropResult) => {
@@ -48,21 +49,34 @@ export default function Home() {
     setItems(reorderedItems);
   };
 
+  useEffect(() => {
+    const animation = requestAnimationFrame(() => setEnabled(true));
+
+    return () => {
+      cancelAnimationFrame(animation);
+      setEnabled(false);
+    };
+  }, []);
+
+  if (!enabled) {
+    return null;
+  }
+
   return (
     <div>
       <Header />
       <main className="flex">
         <Menu />
-        <section className="w-full p-4 bg-white">
-          <h1 className="text-2xl font-black border-b-2 border-black border-solid">
+        <section className="w-full bg-white p-4">
+          <h1 className="border-b-2 border-solid border-black text-2xl font-black">
             HOME
           </h1>
-          <div className="flex justify-between p-4 bg-neutral-100">
+          <div className="flex justify-between bg-neutral-100 p-4">
             <DragDropContext onDragEnd={onDragEnd}>
               {LEAD_STATES.map((state) => (
                 <div
                   key={state.id}
-                  className="bg-white border border-solid rounded border-neutral-300"
+                  className="rounded border border-solid border-neutral-300 bg-white"
                 >
                   <div className="p-4">
                     <h2 className="text-lg font-bold">{state.name}</h2>
@@ -73,7 +87,7 @@ export default function Home() {
                       <div
                         {...provided.droppableProps}
                         ref={provided.innerRef}
-                        className="border border-red-500 border-solid rounded"
+                        className="rounded border border-solid border-red-500"
                       >
                         {leadItems
                           .filter((item) => item.stateId === state.id)
@@ -108,7 +122,7 @@ export default function Home() {
             </DragDropContext>
           </div>
           <Link href="/lead">
-            <button className="p-3 mt-4 border border-solid rounded bg-neutral-300">
+            <button className="mt-4 rounded border border-solid bg-neutral-300 p-3">
               리드 아이템 페이지로
             </button>
           </Link>
