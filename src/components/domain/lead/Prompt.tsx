@@ -25,7 +25,7 @@ const Prompt = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    file && setSourceData(file);
+    if (file) setSourceData(file);
   };
 
   return (
