@@ -63,6 +63,7 @@ const Prompt = () => {
                   <input
                     type="file"
                     id="source"
+                    accept=".pdf"
                     onChange={(e) => {
                       e.preventDefault();
                     }}
@@ -81,7 +82,7 @@ const Prompt = () => {
                     <p className="leading-loose text-neutral-500">
                       업로드할 파일을 선택하거나 드래그 앤 드롭하세요.
                       <br />
-                      지원되는 파일 형식: PDF, .txt, Markdown, 오디오(예: mp3)
+                      지원되는 파일 형식: PDF
                     </p>
                   </label>
                 </div>
