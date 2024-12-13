@@ -1,10 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 const Prompt = () => {
   const [madalOpen, setMadalOpen] = useState(false);
-  const [sourceData, setSourceData] = useState(false);
+  const [sourceData, setSourceData] = useState<File | null>(null);
+  const [dragActive, setDragActive] = useState(false);
+
+  const handleDragStart = () => setDragActive(true);
+  const handleDragEnd = () => setDragActive(false);
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLLabelElement>) => {
+    e.preventDefault();
+
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      setDragActive(false);
+      setSourceData(file);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) setSourceData(file);
+  };
 
   return (
     <>
@@ -43,12 +65,6 @@ const Prompt = () => {
                       <br />
                       (예: 주요 기술, 마케팅 계획, 연구 노트 등)
                     </p>
-                    <button
-                      onClick={() => setSourceData(true)}
-                      className="w-36 rounded-md bg-neutral-700 p-2"
-                    >
-                      (소스 업로드 완료)
-                    </button>
                   </div>
                   <button
                     onClick={() => {
@@ -59,18 +75,21 @@ const Prompt = () => {
                     ✕
                   </button>
                 </div>
-                <div className="rounded-2xl border border-dashed border-neutral-600 bg-neutral-900">
+                <div className="">
                   <input
                     type="file"
                     id="source"
-                    onChange={(e) => {
-                      e.preventDefault();
-                    }}
+                    accept=".pdf"
+                    onChange={handleChange}
                     className="hidden"
                   />
                   <label
                     htmlFor="source"
-                    className="flex h-full cursor-pointer flex-col items-center justify-center gap-3 py-6"
+                    onDragEnter={handleDragStart}
+                    onDragLeave={handleDragEnd}
+                    onDragOver={handleDragOver}
+                    onDrop={handleDrop}
+                    className={`flex h-full cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-neutral-600 py-6 ${dragActive ? "bg-neutral-700" : "bg-neutral-900"}`}
                   >
                     <h2 className="h-14 w-14 rounded-full bg-neutral-600 p-3.5 text-2xl font-black leading-6 text-neutral-400">
                       ⇪
@@ -81,7 +100,7 @@ const Prompt = () => {
                     <p className="leading-loose text-neutral-500">
                       업로드할 파일을 선택하거나 드래그 앤 드롭하세요.
                       <br />
-                      지원되는 파일 형식: PDF, .txt, Markdown, 오디오(예: mp3)
+                      지원되는 파일 형식: PDF
                     </p>
                   </label>
                 </div>
