@@ -14,11 +14,11 @@ const Prompt = () => {
   };
 
   const handleDrop = (e: React.DragEvent) => {
-    e.preventDefault();
+    e && e.preventDefault();
 
     const file = e.dataTransfer.files[0];
     setDragActive(false);
-    file && setSourceData(file);
+    setSourceData(file);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
