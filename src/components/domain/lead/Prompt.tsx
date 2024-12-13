@@ -4,7 +4,12 @@ import { useState } from "react";
 
 const Prompt = () => {
   const [madalOpen, setMadalOpen] = useState(false);
-  const [sourceData, setSourceData] = useState(false);
+  const [sourceData, setSourceData] = useState(null);
+  const [dragActive, setDragActive] = useState(false);
+
+  const handleDragStart = () => setDragActive(true);
+  const handleDragEnd = () => setDragActive(false);
+  const handleDrop = () => {};
 
   return (
     <>
@@ -43,12 +48,12 @@ const Prompt = () => {
                       <br />
                       (예: 주요 기술, 마케팅 계획, 연구 노트 등)
                     </p>
-                    <button
+                    {/* <button
                       onClick={() => setSourceData(true)}
-                      className="w-36 rounded-md bg-neutral-700 p-2"
+                      className="p-2 rounded-md w-36 bg-neutral-700"
                     >
                       (소스 업로드 완료)
-                    </button>
+                    </button> */}
                   </div>
                   <button
                     onClick={() => {
@@ -59,7 +64,7 @@ const Prompt = () => {
                     ✕
                   </button>
                 </div>
-                <div className="rounded-2xl border border-dashed border-neutral-600 bg-neutral-900">
+                <div className="">
                   <input
                     type="file"
                     id="source"
@@ -71,7 +76,10 @@ const Prompt = () => {
                   />
                   <label
                     htmlFor="source"
-                    className="flex h-full cursor-pointer flex-col items-center justify-center gap-3 py-6"
+                    onDragEnter={handleDragStart}
+                    onDragLeave={handleDragEnd}
+                    onDrop={handleDrop}
+                    className={`flex h-full cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-neutral-600 py-6 ${dragActive ? "bg-neutral-700" : "bg-neutral-900"}`}
                   >
                     <h2 className="h-14 w-14 rounded-full bg-neutral-600 p-3.5 text-2xl font-black leading-6 text-neutral-400">
                       ⇪
