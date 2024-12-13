@@ -18,7 +18,7 @@ const Prompt = () => {
 
     const file = e.dataTransfer.files[0];
     setDragActive(false);
-    setSourceData(file);
+    file && setSourceData(file);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
