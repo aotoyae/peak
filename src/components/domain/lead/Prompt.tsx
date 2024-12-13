@@ -64,12 +64,6 @@ const Prompt = () => {
                       <br />
                       (예: 주요 기술, 마케팅 계획, 연구 노트 등)
                     </p>
-                    {/* <button
-                      onClick={() => setSourceData(true)}
-                      className="p-2 rounded-md w-36 bg-neutral-700"
-                    >
-                      (소스 업로드 완료)
-                    </button> */}
                   </div>
                   <button
                     onClick={() => {
