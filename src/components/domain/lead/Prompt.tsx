@@ -13,12 +13,12 @@ const Prompt = () => {
     e.preventDefault();
   };
 
-  const handleDrop = (e: React.DragEvent) => {
-    e && e.preventDefault();
+  const handleDrop = (e: React.DragEvent<HTMLLabelElement>) => {
+    e.preventDefault();
 
     const file = e.dataTransfer.files[0];
     setDragActive(false);
-    file && setSourceData(file);
+    setSourceData(file);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
