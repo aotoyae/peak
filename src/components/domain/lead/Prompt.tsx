@@ -22,6 +22,11 @@ const Prompt = () => {
     setSourceData(file);
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    file && setSourceData(file);
+  };
+
   return (
     <>
       {sourceData ? (
@@ -80,9 +85,7 @@ const Prompt = () => {
                     type="file"
                     id="source"
                     accept=".pdf"
-                    onChange={(e) => {
-                      e.preventDefault();
-                    }}
+                    onChange={handleChange}
                     className="hidden"
                   />
                   <label
