@@ -1,15 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { cn } from "@/lib/utils";
+import React, { useState } from "react";
 
 const Prompt = () => {
   const [madalOpen, setMadalOpen] = useState(false);
-  const [sourceData, setSourceData] = useState(null);
+  const [sourceData, setSourceData] = useState<File | null>(null);
   const [dragActive, setDragActive] = useState(false);
 
   const handleDragStart = () => setDragActive(true);
   const handleDragEnd = () => setDragActive(false);
-  const handleDrop = () => {};
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+
+    const file = e.dataTransfer.files[0];
+    setDragActive(false);
+    setSourceData(file);
+  };
 
   return (
     <>
@@ -78,6 +89,7 @@ const Prompt = () => {
                     htmlFor="source"
                     onDragEnter={handleDragStart}
                     onDragLeave={handleDragEnd}
+                    onDragOver={handleDragOver}
                     onDrop={handleDrop}
                     className={`flex h-full cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-neutral-600 py-6 ${dragActive ? "bg-neutral-700" : "bg-neutral-900"}`}
                   >
