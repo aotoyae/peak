@@ -40,11 +40,11 @@ const COLUMN_TITLES: Record<LeadKey, LeadTitle> = {
   },
   closed: {
     name: "Closed",
-    info: "제안 전",
+    info: "계약 완료",
   },
   lost: {
-    name: "Lead Gen",
-    info: "계약 완료",
+    name: "Lost",
+    info: "계약 취소",
   },
 };
 
