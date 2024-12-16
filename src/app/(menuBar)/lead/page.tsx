@@ -1,7 +1,7 @@
-import Details from "@/components/domain/lead/Details";
-import FollowUp from "@/components/domain/lead/FollowUp";
-import Prompt from "@/components/domain/lead/Prompt";
-import Summary from "@/components/domain/lead/Summary";
+import Details from "@/components/domain/lead/details/Details";
+import FollowUp from "@/components/domain/lead/follow-up/FollowUp";
+import Prompt from "@/components/domain/lead/propmt/Prompt";
+import Summary from "@/components/domain/lead/summary/Summary";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const page = () => {

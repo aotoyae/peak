@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ModalOpenBtn from "@/components/common/ModalOpenBtn";
-import SourceUploadModal from "./UploadModal/SourceUploadModal";
+import SourceUploadModal from "./SourceUploadModal";
 
 const Prompt = () => {
   const [madalOpen, setMadalOpen] = useState(false);
