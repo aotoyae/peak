@@ -1,9 +1,9 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Details from "@/components/domain/lead/details/Details";
 import FollowUp from "@/components/domain/lead/follow-up/FollowUp";
 import LeadHeader from "@/components/domain/lead/LeadHeader";
 import Prompt from "@/components/domain/lead/propmt/Prompt";
 import Summary from "@/components/domain/lead/summary/Summary";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const page = () => {
   return (
