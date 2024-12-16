@@ -6,6 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import TabHeader from "../TabHeader";
 
 const SCORE_BOARD = [
   {
@@ -48,12 +49,7 @@ const SCORE_BOARD = [
 const FollowUp = () => {
   return (
     <main className="grid grid-cols-2">
-      <h3 className="border-y border-r border-solid border-neutral-400 py-4 text-center text-lg font-bold">
-        MEDDICC
-      </h3>
-      <h3 className="border-y border-solid border-neutral-400 py-4 text-center text-lg font-bold">
-        리마인드
-      </h3>
+      <TabHeader firstTitle="MEDDICC" secondTitle="리마인드" />
       <section className="flex flex-col gap-8 border-r border-solid border-neutral-400 p-4">
         <div>
           <h4 className="m-2 text-lg font-bold">스코어 보드</h4>
