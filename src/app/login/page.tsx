@@ -1,4 +1,5 @@
 import PEAK_LOGO from "@/assets/peak_logo_wt.png";
+import LoginForm from "@/components/domain/login/LoginForm";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,24 +16,7 @@ const page = () => {
         </div>
       </section>
       <section className="flex flex-col items-center justify-center">
-        <form className="flex flex-col items-center justify-center gap-4">
-          <h2 className="pb-8 text-2xl font-black">PEAK</h2>
-          <label className="block w-64 text-left">Email</label>
-          <input
-            type="text"
-            placeholder="Enter your email..."
-            className="w-64 rounded border border-solid border-neutral-300 p-2"
-          />
-          <label className="block w-64 text-left">Password</label>
-          <input
-            type="password"
-            placeholder="Enter your password..."
-            className="w-64 rounded border border-solid border-neutral-300 p-2"
-          />
-          <button className="w-64 rounded bg-neutral-400 p-2 text-white">
-            Continue with Email
-          </button>
-        </form>
+        <LoginForm />
         <p className="absolute bottom-6 right-6 text-sm text-neutral-400">
           문의 안내 edu@goodai.kr
         </p>
