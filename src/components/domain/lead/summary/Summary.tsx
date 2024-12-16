@@ -1,12 +1,9 @@
+import TabHeader from "../TabHeader";
+
 const Summary = () => {
   return (
     <main className="grid grid-cols-2">
-      <h3 className="border-y border-r border-solid border-neutral-400 py-4 text-center text-lg font-bold">
-        AI 분석
-      </h3>
-      <h3 className="border-y border-solid border-neutral-400 py-4 text-center text-lg font-bold">
-        HI 분석
-      </h3>
+      <TabHeader firstTitle="AI 분석" secondTitle="HI 분석" />
       <section className="flex flex-col items-end justify-between gap-4 border-r border-solid border-neutral-400 p-4">
         <button className="rounded-full bg-neutral-500 px-10 py-3 text-white">
           AI 분석 시작
