@@ -98,6 +98,9 @@ const FollowUp = () => {
             </TableBody>
           </Table>
         </div>
+        <button className="self-end rounded bg-neutral-300 px-10 py-2">
+          저장하기
+        </button>
       </section>
       <section></section>
     </main>
