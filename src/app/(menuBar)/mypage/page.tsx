@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Profile from "../../../assets/profile.png";
+import AnalysisForm from "@/components/domain/mypage/\bAnalysisForm";
 
 const page = () => {
   return (
@@ -23,23 +26,7 @@ const page = () => {
             <li className="flex items-center justify-center">홍길동</li>
           </ul>
         </section>
-        <section className="flex w-full flex-col gap-4 border-b border-solid border-neutral-300 px-8 pb-8">
-          <h2 className="font-bold">AI 분석을 위한 정보</h2>
-          <p>마이페이지에 입력한 정보를 기반으로 잠재 고객을 추천합니다.</p>
-          <form className="flex items-center justify-center gap-6 rounded bg-neutral-100 py-4">
-            <label className="font-black">회사 소개서</label>
-            <input
-              type="file"
-              placeholder="회사소개서를 업로드해 주세요."
-              className="rounded border border-solid border-neutral-400 p-2"
-            />
-            <button className="w-32 rounded bg-neutral-400 p-3 text-white">
-              Upload
-            </button>
-          </form>
-          <h2 className="font-bold">분석</h2>
-          <div className="h-64 rounded bg-neutral-200"></div>
-        </section>
+        <AnalysisForm />
         <section className="w-full px-8">
           <h2 className="pb-4 font-bold">세르파</h2>
           <div className="flex items-center justify-between gap-10">

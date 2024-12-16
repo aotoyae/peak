@@ -1,4 +1,13 @@
+"use client";
+
+import FormBtn from "@/components/common/FormBtn";
+
 const LoginForm = () => {
+  const handleLogin = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    console.log("login");
+  };
+
   return (
     <form className="flex flex-col items-center justify-center gap-4">
       <h2 className="pb-8 text-2xl font-black">PEAK</h2>
@@ -14,9 +23,13 @@ const LoginForm = () => {
         placeholder="Enter your password..."
         className="w-64 rounded border border-solid border-neutral-300 p-2"
       />
-      <button className="w-64 rounded bg-neutral-400 p-2 text-white">
-        Continue with Email
-      </button>
+      <FormBtn
+        onClick={handleLogin}
+        width="w-64"
+        padding="p-2"
+        color="text-white"
+        text="Continue with Email"
+      />
     </form>
   );
 };
