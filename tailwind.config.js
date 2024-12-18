@@ -16,9 +16,11 @@ const config = {
   theme: {
     extend: {
       dropShadow: {
-        DEFAULT: "4px 4px 4px #d4d4d4",
+        DEFAULT: "4px 4px 5px #787878",
       },
       colors: {
+        pointColor1: "#841AF6",
+        pointColor2: "#3E146B",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

@@ -6,7 +6,7 @@ import Link from "next/link";
 const page = () => {
   return (
     <main className="grid h-screen grid-cols-2">
-      <section className="flex flex-col justify-between bg-black p-6 text-white">
+      <section className="flex flex-col justify-between bg-black p-6">
         <Link href="/">
           <Image src={PEAK_LOGO} alt="peak logo" width={100} />
         </Link>
@@ -17,7 +17,7 @@ const page = () => {
       </section>
       <section className="flex flex-col items-center justify-center">
         <LoginForm />
-        <p className="absolute bottom-6 right-6 text-sm text-neutral-400">
+        <p className="absolute bottom-6 right-6 text-sm text-zinc-500">
           문의 안내 edu@goodai.kr
         </p>
       </section>

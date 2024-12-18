@@ -35,8 +35,8 @@ const SourceUploadModal = ({
   };
 
   return (
-    <section className="fixed inset-0 flex items-center justify-center bg-neutral-950 bg-opacity-50">
-      <div className="flex w-[50vw] flex-col gap-6 rounded-2xl bg-neutral-800 p-6">
+    <section className="fixed inset-0 flex items-center justify-center bg-zinc-950 bg-opacity-50">
+      <div className="flex w-[50vw] flex-col gap-6 rounded-2xl bg-zinc-800 p-6">
         <ModalHeader setMadalOpen={setMadalOpen} />
         <div className="">
           <input
@@ -52,7 +52,7 @@ const SourceUploadModal = ({
             onDragLeave={handleDragEnd}
             onDragOver={handleDragOver}
             onDrop={handleDrop}
-            className={`flex h-full cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-neutral-600 py-6 ${dragActive ? "bg-neutral-700" : "bg-neutral-900"}`}
+            className={`flex h-full cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-zinc-600 py-6 ${dragActive ? "bg-zinc-700" : "bg-zinc-900"}`}
           >
             <ModalContents />
           </label>

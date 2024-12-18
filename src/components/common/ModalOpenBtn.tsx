@@ -10,7 +10,7 @@ const ModalOpenBtn: React.FC<ModalBtnProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`${width} rounded bg-neutral-400 ${padding} ${color}`}
+      className={`${width} rounded ${padding} ${color}`}
     >
       {text}
     </button>

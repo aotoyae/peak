@@ -7,10 +7,10 @@ import Summary from "@/components/domain/lead/summary/Summary";
 
 const page = () => {
   return (
-    <main className="w-full bg-white">
+    <main className="w-full bg-zinc-900">
       <LeadHeader />
       <Tabs defaultValue="prompt" className="w-full">
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="grid w-full grid-cols-4 bg-zinc-700 text-zinc-300">
           {/* 리드 아이템 목록 */}
           <TabsTrigger value="prompt">프롬프트</TabsTrigger>
           {/* 회사 소개서에 따른 AI/HI 분석 */}

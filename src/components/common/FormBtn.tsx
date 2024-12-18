@@ -11,7 +11,7 @@ const FormBtn: React.FC<FormBtnProps> = ({
     <button
       type="submit"
       onClick={onClick}
-      className={`${width} rounded bg-neutral-400 ${padding} ${color}`}
+      className={`${width} rounded-lg ${padding} ${color}`}
     >
       {text}
     </button>
