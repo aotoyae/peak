@@ -9,7 +9,7 @@ export default function MenuLayout({
   return (
     <>
       <Header />
-      <main className="flex justify-between bg-neutral-400">
+      <main className="flex justify-between bg-zinc-800">
         <Menu />
         {children}
       </main>

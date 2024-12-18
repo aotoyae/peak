@@ -15,19 +15,19 @@ const LoginForm = () => {
       <input
         type="text"
         placeholder="Enter your email..."
-        className="w-64 rounded border border-solid border-neutral-300 p-2"
+        className="w-64 rounded-lg bg-zinc-600 p-2"
       />
       <label className="block w-64 text-left">Password</label>
       <input
         type="password"
         placeholder="Enter your password..."
-        className="w-64 rounded border border-solid border-neutral-300 p-2"
+        className="w-64 rounded-lg bg-zinc-600 p-2"
       />
       <FormBtn
         onClick={handleLogin}
         width="w-64"
-        padding="p-2"
-        color="text-white"
+        padding="px-2 py-3"
+        color="bg-pointColor1"
         text="Continue with Email"
       />
     </form>

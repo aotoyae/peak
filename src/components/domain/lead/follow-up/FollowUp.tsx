@@ -50,11 +50,11 @@ const FollowUp = () => {
   return (
     <main className="grid grid-cols-2">
       <TabHeader firstTitle="MEDDICC" secondTitle="리마인드" />
-      <section className="flex flex-col gap-8 border-r border-solid border-neutral-400 p-4">
+      <section className="flex flex-col gap-8 border-r border-solid border-zinc-600 p-4">
         <div>
           <h4 className="m-2 text-lg font-bold">스코어 보드</h4>
           <Table>
-            <TableHeader className="bg-neutral-100">
+            <TableHeader className="bg-zinc-800">
               <TableRow>
                 <TableHead className="w-[120px]">카테고리</TableHead>
                 <TableHead>설명</TableHead>
@@ -77,7 +77,7 @@ const FollowUp = () => {
         <div>
           <h4 className="m-2 text-lg font-bold">거래성사 가능성</h4>
           <Table>
-            <TableHeader className="bg-neutral-100">
+            <TableHeader className="bg-zinc-800">
               <TableRow>
                 <TableHead>가능성</TableHead>
                 <TableHead>설명</TableHead>
@@ -98,7 +98,7 @@ const FollowUp = () => {
             </TableBody>
           </Table>
         </div>
-        <button className="self-end rounded bg-neutral-300 px-10 py-2">
+        <button className="self-end rounded bg-zinc-700 px-10 py-2">
           저장하기
         </button>
       </section>

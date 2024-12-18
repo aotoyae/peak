@@ -80,13 +80,13 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <main className="flex">
+      <main className="flex bg-zinc-900">
         <Menu />
-        <section className="w-full bg-white p-4">
-          <h1 className="border-b-2 border-solid border-black text-2xl font-black">
+        <section className="w-full p-4">
+          <h1 className="border-b-2 border-solid border-zinc-700 text-2xl font-black">
             HOME
           </h1>
-          <div className="flex justify-between gap-4 p-4">
+          <div className="flex justify-between gap-4 py-4">
             <DragDropContext onDragEnd={onDragEnd}>
               {Object.keys(leadItems).map((key) => (
                 <div key={key} className="w-1/5">
@@ -95,13 +95,13 @@ export default function Home() {
                       <div
                         {...provided.droppableProps}
                         ref={provided.innerRef}
-                        className={`h-full rounded-lg border border-solid border-neutral-300 p-2 ${snapshot.isDraggingOver && "shadow-lg"}`}
+                        className={`h-full rounded-2xl border border-solid border-zinc-700 bg-zinc-800 p-2 shadow-md ${snapshot.isDraggingOver && "shadow-lg"}`}
                       >
                         <div className="p-4">
                           <h2 className="text-lg font-bold">
                             {COLUMN_TITLES[key as LeadKey].name}
                           </h2>
-                          <p className="text-sm text-neutral-500">
+                          <p className="text-sm text-zinc-400">
                             {COLUMN_TITLES[key as LeadKey].info}
                           </p>
                         </div>
@@ -117,8 +117,8 @@ export default function Home() {
                                   ref={provided.innerRef}
                                   {...provided.draggableProps}
                                   {...provided.dragHandleProps}
-                                  className={`mx-2 my-4 rounded border border-solid border-neutral-100 p-4 shadow-md ${
-                                    snapshot.isDragging && "bg-neutral-300"
+                                  className={`mx-1 my-4 rounded-2xl bg-zinc-900 p-4 shadow-md ${
+                                    snapshot.isDragging && "bg-zinc-300"
                                   }`}
                                 >
                                   {item.title}
@@ -136,7 +136,7 @@ export default function Home() {
             </DragDropContext>
           </div>
           <Link href="/lead">
-            <button className="mt-4 rounded border border-solid bg-neutral-300 p-3">
+            <button className="rounded-2xl bg-zinc-800 p-4">
               리드 아이템 페이지로
             </button>
           </Link>
