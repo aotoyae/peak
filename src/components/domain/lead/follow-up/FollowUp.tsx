@@ -67,7 +67,11 @@ const FollowUp = () => {
                   <TableCell>{category.name}</TableCell>
                   <TableCell>{category.info}</TableCell>
                   <TableCell className="text-center">
-                    {category.score}
+                    <input
+                      type="text"
+                      placeholder={String(category.score)}
+                      className="w-8 rounded-lg bg-zinc-600 text-center"
+                    />
                   </TableCell>
                 </TableRow>
               ))}
