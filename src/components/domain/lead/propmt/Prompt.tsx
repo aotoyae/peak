@@ -25,7 +25,7 @@ const Prompt = () => {
             onClick={() => setMadalOpen(true)}
             width="w-32"
             padding="py-2"
-            color="bg-pointColor1"
+            color="bg-peak-600"
             text="소스 추가"
           />
           <section className="flex h-32 w-1/5 flex-col items-center justify-between self-start rounded-2xl border border-solid border-zinc-700 bg-zinc-800 p-4">
