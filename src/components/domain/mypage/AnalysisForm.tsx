@@ -23,7 +23,7 @@ const AnalysisForm = () => {
           onClick={handleUpload}
           width="w-32"
           padding="p-3"
-          color="bg-pointColor1"
+          color="bg-peak-600"
           text="Upload"
         />
       </form>

@@ -27,7 +27,7 @@ const LoginForm = () => {
         onClick={handleLogin}
         width="w-64"
         padding="px-2 py-3"
-        color="bg-pointColor1"
+        color="bg-peak-600"
         text="Continue with Email"
       />
     </form>
