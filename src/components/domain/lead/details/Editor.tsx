@@ -28,18 +28,20 @@ const Editor = () => {
   return (
     <LexicalComposer initialConfig={initialConfig}>
       <Toolbar />
-      <RichTextPlugin
-        contentEditable={
-          <ContentEditable className="editor h-32 w-full rounded-2xl border border-solid border-purple-500 bg-zinc-800 p-4" />
-        }
-        placeholder={<div>Start typing...</div>}
-        ErrorBoundary={() => (
-          <div>
-            <h2>Something went wrong.</h2>
-            <p>error</p>
-          </div>
-        )}
-      />
+      <div className="relative w-full">
+        <RichTextPlugin
+          contentEditable={
+            <ContentEditable className="editor h-32 rounded-2xl border border-solid border-purple-500 bg-zinc-800 p-4" />
+          }
+          placeholder={<div className="absolute left-4 top-4">메모 작성</div>}
+          ErrorBoundary={() => (
+            <div>
+              <h2>Something went wrong.</h2>
+              <p>error</p>
+            </div>
+          )}
+        />
+      </div>
       <HistoryPlugin />
       <OnChangePlugin onChange={handleEditorChange} />
     </LexicalComposer>
