@@ -1,5 +1,6 @@
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import { FORMAT_TEXT_COMMAND } from "lexical";
+import React from "react";
 
 type TextFormatType =
   | "bold"
@@ -18,7 +19,7 @@ const Toolbar = () => {
   };
 
   return (
-    <div className="mb-2 flex space-x-2 rounded bg-gray-100 p-2">
+    <section className="mb-2 flex space-x-2 rounded bg-zinc-100 p-2">
       <button
         onClick={() => applyFormatting("bold")}
         className="rounded bg-blue-500 px-3 py-1 text-white hover:bg-blue-600"
@@ -37,7 +38,7 @@ const Toolbar = () => {
       >
         Underline
       </button>
-    </div>
+    </section>
   );
 };
 
