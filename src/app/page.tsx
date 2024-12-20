@@ -83,7 +83,7 @@ export default function Home() {
       <main className="flex bg-zinc-900">
         <Menu />
         <section className="w-full p-4">
-          <h1 className="border-b-2 border-solid border-zinc-700 text-2xl font-black">
+          <h1 className="border-b-2 border-solid border-zinc-700 text-2xl font-black text-zinc-200">
             HOME
           </h1>
           <div className="flex justify-between gap-4 py-4">
