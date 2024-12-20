@@ -1,7 +1,6 @@
 // components/Editor.tsx
 "use client";
 
-import React, { useEffect } from "react";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
