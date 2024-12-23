@@ -232,7 +232,7 @@ const AdminPage = () => {
             <button
               disabled={!formState.isValid}
               type="submit"
-              className="w-full self-end rounded-lg bg-zinc-700 p-4"
+              className="w-full self-end rounded-lg bg-peak-600 p-4"
             >
               추가하기
             </button>

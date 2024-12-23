@@ -17,7 +17,7 @@ const ModalHeader = ({
         onClick={() => {
           setMadalOpen(false);
         }}
-        className="h-14 w-14 rounded-full bg-zinc-500 p-4 text-2xl font-black leading-7 text-zinc-300"
+        className="h-14 w-14 rounded-full bg-zinc-500 p-4 text-2xl font-black leading-6 text-zinc-300"
       >
         ✕
       </button>

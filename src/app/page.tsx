@@ -117,11 +117,17 @@ export default function Home() {
                                   ref={provided.innerRef}
                                   {...provided.draggableProps}
                                   {...provided.dragHandleProps}
-                                  className={`mx-1 my-4 rounded-2xl bg-zinc-900 p-4 shadow-md ${
+                                  className={`mx-1 my-4 flex justify-between rounded-2xl bg-zinc-900 p-4 shadow-md ${
                                     snapshot.isDragging && "bg-zinc-300"
                                   }`}
                                 >
-                                  {item.title}
+                                  <h3>{item.title}</h3>
+                                  <Link
+                                    href={`/lead/${item.id}`}
+                                    className="text-sm text-peak-400"
+                                  >
+                                    detail ▶
+                                  </Link>
                                 </div>
                               )}
                             </Draggable>
@@ -135,11 +141,11 @@ export default function Home() {
               ))}
             </DragDropContext>
           </div>
-          <Link href="/lead">
-            <button className="rounded-2xl bg-zinc-800 p-4">
+          {/* <Link href="/lead">
+            <button className="p-4 rounded-2xl bg-zinc-800">
               리드 아이템 페이지로
             </button>
-          </Link>
+          </Link> */}
         </section>
       </main>
     </div>
