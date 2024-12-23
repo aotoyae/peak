@@ -3,7 +3,7 @@ import LoginForm from "@/components/domain/login/LoginForm";
 import Image from "next/image";
 import Link from "next/link";
 
-const page = () => {
+const LoginPage = () => {
   return (
     <main className="grid h-screen grid-cols-2">
       <section className="flex flex-col justify-between bg-black p-6">
@@ -25,4 +25,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default LoginPage;

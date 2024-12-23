@@ -5,7 +5,7 @@ import LeadHeader from "@/components/domain/lead/LeadHeader";
 import Prompt from "@/components/domain/lead/propmt/Prompt";
 import Summary from "@/components/domain/lead/summary/Summary";
 
-const page = () => {
+const LeadPage = () => {
   return (
     <main className="w-full bg-zinc-900">
       <LeadHeader />
@@ -37,4 +37,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default LeadPage;

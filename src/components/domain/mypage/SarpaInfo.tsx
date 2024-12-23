@@ -15,13 +15,13 @@ const SarpaInfo = () => {
             홍길동
           </li>
           <li className="flex items-center justify-center border-b border-r border-solid border-zinc-600 bg-zinc-800">
-            역할
+            직책
           </li>
           <li className="flex items-center justify-center border-b border-solid border-zinc-600">
             대표
           </li>
           <li className="flex h-10 items-center justify-center border-b border-solid border-zinc-600 bg-zinc-800">
-            휴대폰
+            연락처
           </li>
           <li className="flex items-center justify-center border-x border-b border-solid border-zinc-600">
             010-1234-3893

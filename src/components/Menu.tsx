@@ -10,6 +10,9 @@ const Menu = () => {
         <Link href="/mypage">
           <li>MYPAGE</li>
         </Link>
+        <Link href="/admin">
+          <li>ADMIN</li>
+        </Link>
       </ul>
     </nav>
   );
