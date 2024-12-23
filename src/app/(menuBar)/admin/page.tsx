@@ -29,10 +29,22 @@ const AdminPage = () => {
       // updated_at: now,
     };
     try {
-      const res = await addDoc(usersCollection, newUser);
-      console.log(res);
+      const response = await fetch("http://127.0.0.1:8000/users/create-user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Response:", data);
     } catch (error) {
-      console.log(error);
+      console.log("Error:", error);
     }
   };
 
