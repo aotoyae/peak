@@ -4,7 +4,7 @@ import AnalysisForm from "@/components/domain/mypage/AnalysisForm";
 import PartnerInfo from "@/components/domain/mypage/PartnerInfo";
 import SarpaInfo from "@/components/domain/mypage/SarpaInfo";
 
-const page = () => {
+const Mypage = () => {
   return (
     <main className="w-full bg-zinc-900 p-4">
       <h1 className="border-b-2 border-solid border-zinc-600 text-2xl font-black text-zinc-200">
@@ -19,4 +19,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Mypage;

@@ -5,7 +5,7 @@ import { collection, addDoc } from "firebase/firestore/lite";
 import { db } from "@/shared/firebase";
 // import firestore from "firebase/compat/firestore";
 
-const page = () => {
+const AdminPage = () => {
   const usersCollection = collection(db, "users");
   const { register, handleSubmit, formState } = useForm({
     mode: "onChange",
@@ -243,4 +243,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default AdminPage;
