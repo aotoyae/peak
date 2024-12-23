@@ -1,8 +1,12 @@
 "use client";
 
 import { FieldValues, useForm } from "react-hook-form";
+import { collection, addDoc } from "firebase/firestore/lite";
+import { db } from "@/shared/firebase";
+// import firestore from "firebase/compat/firestore";
 
 const page = () => {
+  const usersCollection = collection(db, "users");
   const { register, handleSubmit, formState } = useForm({
     mode: "onChange",
     defaultValues: {
@@ -16,7 +20,21 @@ const page = () => {
     },
   });
 
-  const onSubmit = (value: FieldValues) => {};
+  const onSubmit = async (value: FieldValues) => {
+    const now = new Date().toISOString();
+    const newUser = {
+      ...value,
+      role: "sherpa",
+      // created_at: now,
+      // updated_at: now,
+    };
+    try {
+      const res = await addDoc(usersCollection, newUser);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <main className="w-full bg-zinc-900 p-4">
