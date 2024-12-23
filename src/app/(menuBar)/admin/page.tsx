@@ -21,7 +21,7 @@ const AdminPage = () => {
   });
 
   const onSubmit = async (value: FieldValues) => {
-    const now = new Date().toISOString();
+    // const now = new Date().toISOString();
     const newUser = {
       ...value,
       role: "sherpa",
