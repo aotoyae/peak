@@ -79,15 +79,12 @@ export default function Editor() {
   const [showTable, setShowTable] = useState<boolean>(false);
   return (
     <LexicalComposer initialConfig={editorConfig}>
-      <div className="editor-container w-full">
+      <div className="editor-container h-full w-full">
         <ToolbarPlugin />
-        <div className="editor-inner relative rounded-b-2xl">
-          <button className="absolute bottom-4 right-4 z-10 rounded bg-zinc-700 px-10 py-2">
-            저장하기
-          </button>
+        <div className="editor-inner relative h-full rounded-b-2xl">
           <RichTextPlugin
             contentEditable={
-              <ContentEditable className="editor-input h-32 rounded-b-2xl border-x border-b border-solid border-zinc-700 bg-zinc-800 p-4" />
+              <ContentEditable className="editor-input h-full rounded-b-2xl border-x border-b border-solid border-zinc-700 bg-zinc-800 p-4" />
             }
             placeholder={<Placeholder />}
             ErrorBoundary={LexicalErrorBoundary}
