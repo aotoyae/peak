@@ -23,7 +23,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 const LowPriority = 1;
 
 function Divider() {
-  return <div className="divider" />;
+  return <div className="divider bg-zinc-700" />;
 }
 
 const ToolbarPlugin = () => {
