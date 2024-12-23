@@ -36,7 +36,7 @@ const SourceUploadModal = ({
 
   return (
     <section className="fixed inset-0 flex items-center justify-center bg-zinc-950 bg-opacity-50">
-      <div className="flex w-[50vw] flex-col gap-6 rounded-2xl bg-zinc-800 p-6">
+      <div className="flex w-[50vw] flex-col gap-6 rounded-2xl border border-solid border-zinc-700 bg-zinc-800 p-6">
         <ModalHeader setMadalOpen={setMadalOpen} />
         <div className="">
           <input
